@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+
+{% block navbar %}
+{% include 'core/navbar.html' %}
+{% endblock %}
+
+{% block content %} 
+<div class="items row">
+    {% for item in query %}
+    <div class="col-md-6">
+    <a href="{% url 'details' item.pk %}" style="text-decoration:none;color:#000;">
+        <div class="card">
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.date }}</p>
+        </div>
+    </a>
+</div>
+    {% endfor %}
+</div>{% endblock %}

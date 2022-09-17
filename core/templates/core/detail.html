@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block navbar %}
+{% include 'core/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="card" style="border-top: 5px solid blue !important;border-left: none;width: 500px;min-height: 350px;padding: 5px 0 10px 30px;">
+    <h4>Subject:</h4>
+    <h5>{{ item.title|upper }}</h5>
+    <h4>Description</h4>
+    <p>{{ item.description|safe }}</p>
+    <h4>Date Due</h4>
+    <p>{{ item.date }}</p>
+    <h4>Status:</h4>
+    <p>{% if item.done %} Done {% else %} Not Done {% endif %}</p>
+    <div class="buttons">
+        <a href="{% url 'edit' item.pk %}"><button class="btn-round success">Edit Todo</button></a>
+        <a href="{% url 'delete' item.pk %}"><button class="btn-round danger">Delete Todo</button></a>
+    </div>
+</div>
+
+{% endblock %}
