@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div style="max-width: 70%;">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        <div class="mb-3">
+            <label for="id_title">Title</label>
+            {{ form.title }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.description }}
+        </div>
+
+        <label for="id_date">Date</label>
+        <div class="input-group mb-3">
+            {{ form.date }}
+            <span class="input-group-text" id="cal" role="button">
+                <svg class="bi me-2" width="15" height="15"><use xlink:href="#calendar"/></svg>
+            </span>
+        </div>
+        <div class="form-check mb-3">
+            {{ form.done }}
+            <label class="form-check-label" for="flexCheckDefault">
+              Done
+            </label>
+        </div>
+
+        <div class="col-12">
+            <input style="width: 100%;" class="btn btn-danger btn-rounded" type="submit" value="Create Todo">
+        </div>
+        
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script>
+
+            function focusInput() {
+                document.getElementById("datepicker").focus();
+            }
+
+            document.getElementById('cal').addEventListener('click',focusInput);
+
+            $( function() {
+                $( "#datepicker" ).datepicker();
+                } );
+
+        </script>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

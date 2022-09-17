@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+
+{% block form_content %}
+<div class="login-card">
+    <div class="card-header" style="margin-top: 0;">
+        <h2>WELCOME</h2>
+    </div>
+    <div id="login">
+        <form method="post">
+            {% csrf_token %}
+            <div class="section">
+                <label for="id_username">Username</label> <br>
+                <input type="text" name="username" id="id_username">
+            </div>
+            <div class="section">
+                <label for="id_password">Password</label><br>
+                <input type="password" name="password" id="id_password">
+            </div>
+            <input type="hidden" name="form_type" value="login">
+            <div class="login-btn">
+                <button class="btn-submit" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="base-text" style="margin-top: 10px;">
+            <a href="">Forgot Password?</a>
+            <a id="signup" style="float: right;margin-right: 15px;cursor: pointer;">Signup</a>
+        </div>
+    </div>
+    <!-- <button id="di">remove</button> -->
+    <div id="register" style="display: none;">
+        <form method="post">
+            {% csrf_token %}
+            <div class="section">
+                <label for="id_username">Username</label> <br>
+                <input type="text" name="username" id="id_username">
+            </div>
+            <div class="section">
+                <label for="id_email">Email</label><br>
+                <input type="email" name="email" id="id_email">
+            </div>
+            <div class="section">
+                <label for="id_password">Password</label><br>
+                <input type="password" name="password" id="id_password">
+            </div>
+            <div class="section">
+                <label for="id_password1">Re-enter Password</label><br>
+                <input type="password" name="password1" id="id_password1">
+            </div>
+            <div class="login-btn">
+                <button class="btn-submit" type="submit">Create Account</button>
+            </div>
+            <input type="hidden" name="form_type" value="register">
+        </form>
+        <div class="base-text" style="margin-top: 10px;">
+            <a href="">Forgot Password?</a>
+            <a id="signin" style="float: right;margin-right: 15px;cursor: pointer;">SignIn</a>
+        </div>
+    </div>  
+</div>
+{% endblock %}
+
+{% block script %} 
+<script>
+    let registerForm = document.getElementById('register');
+    let loginForm = document.getElementById('login');
+    function showRegister(){
+        registerForm.style.display = 'block';
+        
+        loginForm.style.display = 'none';
+        
+
+        }
+    function showLogin() {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+    }
+
+    document.getElementById('signin').addEventListener('click',showLogin);
+    document.getElementById('signup').addEventListener('click',showRegister);
+    
+    // $(document).ready(function(){
+    //     $('#signin').click(function(){
+    //         $('#register').hide();
+    //         $('#login').show();
+    //     })
+    //     $('#signup').click(function(){
+    //         $('#login').hide();
+    //         $('#register').show()
+    //     })
+    // })
+
+    
+        
+    
+
+</script>
+
+{% endblock %}

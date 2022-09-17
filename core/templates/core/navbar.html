@@ -1,0 +1,7 @@
+<div class="sidebar">
+    <ul class="sidenav">
+        <li><a {% if home %} class="active" {% endif %} href="/">Home</a></li>
+        <li><a {% if upcoming %} class="active" {% endif %} href="{% url 'upcoming' %}">Upcoming</a></li>
+        <li><a {% if calendar %} class="active" {% endif %} href="">Calendar</a></li>
+    </ul>
+</div>
